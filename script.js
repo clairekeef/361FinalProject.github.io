@@ -53,9 +53,15 @@ function createPropSymbols(data) {
         pointToLayer: function (feature, latlng) {
             //Step 5: For each feature, determine its value for the selected attribute
             var noiseValue = Number(feature.properties[noiseAttribute])
+            var capacityValue = Number(feature.properties.capacity)
+            var maxCap = 107601
+            var minCap = 40350
+
+            var capNorm = (capacityValue - minCap) / (maxCap - minCap)
+
+            var capColor = `rgba(0, 0, 0, ${0.2 + capNorm * 0.6})`
 
             var fillColor = feature.properties.type === "estimated" ? "#FFA500" : "#0077BE" // orange for estimated, blue for measured
-
 
             //create marker options
             var geojsonMarkerOptions = {
@@ -68,6 +74,19 @@ function createPropSymbols(data) {
 
             geojsonMarkerOptions.radius = 5 + 15 * (noiseValue - minNoise) / (maxNoise - minNoise)
 
+            geojsonMarkerOptions.weight = 1 + capNorm * 3
+            geojsonMarkerOptions.color = capColor
+            /*
+            var outerRing = L.circleMarker(latlng, {
+                radius: geojsonMarkerOptions.radius + 3,
+                fillColor: capColor,
+                color: capColor,
+                weight: 1 + capNorm * 3,
+                opacity: 1,
+                fillOpacity: 0.8
+            }).addTo(map)
+
+             */
 
             var marker = L.circleMarker(latlng, geojsonMarkerOptions)
 
@@ -83,10 +102,13 @@ function createPropSymbols(data) {
                 "<p><b>Type:</b> " + feature.properties.type +
                 "</p>"
 
+            //outerRing.bindPopup(popupContent)
             marker.bindPopup(popupContent)
 
             //examine the attribute value to check that it is correct
             console.log(feature.properties, noiseValue)
+
+            marker.bindTooltip(feature.properties.team, {permanent: false, direction: 'top'})
 
             //create circle markers
             return marker
@@ -134,6 +156,28 @@ function createLegend(min, max) {
                 </div>
             `
         })
+        html += `
+    <div class="legend-subtitle">Outer Ring = Stadium Capacity</div>
+    <div class="legend-capacity-example">
+        <svg height="30" width="30">
+            <circle cx="15" cy="15" r="10" stroke="rgba(0,0,0,0.2)" stroke-width="1" fill="none" />
+        </svg>
+        <span>Low capacity</span>
+    </div>
+    <div class="legend-capacity-example">
+        <svg height="30" width="30">
+            <circle cx="15" cy="15" r="10" stroke="rgba(0,0,0,0.5)" stroke-width="2.5" fill="none" />
+        </svg>
+        <span>Medium capacity</span>
+    </div>
+    <div class="legend-capacity-example">
+        <svg height="30" width="30">
+            <circle cx="15" cy="15" r="10" stroke="rgba(0,0,0,0.8)" stroke-width="4" fill="none" />
+        </svg>
+        <span>High capacity</span>
+    </div>
+`
+
 
         html += `</div>` // end .legend-section
         div.innerHTML = html
@@ -141,6 +185,8 @@ function createLegend(min, max) {
     }
 
     legend.addTo(map)
+
+
 }
 
 function calculateNoiseRange(data) {
