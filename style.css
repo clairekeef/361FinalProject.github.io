@@ -1,5 +1,5 @@
 body {
-    background-color: #9f9fd7;
+    background-color: #009dc4;
     margin: 0px;
     padding: 0px;
 }
@@ -16,6 +16,7 @@ body {
     font-size: 14px;
     line-height: 1.4;
     max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .legend h4 {
