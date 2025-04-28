@@ -12,12 +12,10 @@ map = L.map('map').setView([39.828175, -98.5795], 4)
 let fixedCenter = [39.828175, -98.5795]
 
 
-// mapbox://styles/clairekeef/cm8z89nv5000v01rudlafbm4e
-//mapbox://styles/clairekeef/cm8z89nv5000v01rudlafbm4e
-// pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA
+//mapbox://styles/clairekeef/cma14tsfn01hk01s5f9ip3s3w
 // pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA
 
-L.tileLayer('https://api.mapbox.com/styles/v1/clairekeef/cm8z89nv5000v01rudlafbm4e/tiles/512/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA', {
+L.tileLayer('https://api.mapbox.com/styles/v1/clairekeef/cma14tsfn01hk01s5f9ip3s3w/tiles/512/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA', {
     attribution: '© Claire Keef',
     tileSize: 512,
     zoomOffset: -1,
@@ -63,7 +61,7 @@ function createPropSymbols(data) {
 
             var capColor = `rgba(0, 0, 0, ${0.2 + capNorm * 0.6})`
 
-            var fillColor = feature.properties.type === "estimated" ? "#FFA500" : "#0077BE" // orange for estimated, blue for measured
+            var fillColor = feature.properties.type === "estimated" ? "#ff6200" : "#0022ed" // orange for estimated, blue for measured
 
             //create marker options
             var geojsonMarkerOptions = {
@@ -127,9 +125,10 @@ function createLegend(min, max) {
         const div = L.DomUtil.create('div', 'legend')
         const grades = [min, (min + max) / 2, max]
         const colors = {
-            estimated: "#FFA500",
-            measured: "#0077BE"
+            estimated: "#ff6200",
+            measured: "#0022ed"
         }
+        // #ff6200" : "#0022ed
 
         let html = `
             <h4>Noise Legend</h4>
