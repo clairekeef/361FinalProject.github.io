@@ -61,7 +61,7 @@ function createPropSymbols(data) {
 
             var capColor = `rgba(0, 0, 0, ${0.2 + capNorm * 0.6})`
 
-            var fillColor = feature.properties.type === "estimated" ? "#ff6200" : "#0022ed" // orange for estimated, blue for measured
+            var fillColor = feature.properties.type === "estimated" ? "#f6cd66" : "#bc3939" // orange for estimated, blue for measured
 
             //create marker options
             var geojsonMarkerOptions = {
@@ -125,9 +125,10 @@ function createLegend(min, max) {
         const div = L.DomUtil.create('div', 'legend')
         const grades = [min, (min + max) / 2, max]
         const colors = {
-            estimated: "#ff6200",
-            measured: "#0022ed"
+            estimated: "#f6cd66",
+            measured: "#bc3939"
         }
+        //#f6cd66" : "#bc3939
         // #ff6200" : "#0022ed
 
         let html = `
