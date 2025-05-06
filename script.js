@@ -11,7 +11,6 @@ document.getElementById('map').appendChild(mapTitle)
 map = L.map('map').setView([39.828175, -98.5795], 4)
 let fixedCenter = [39.828175, -98.5795]
 
-
 //mapbox://styles/clairekeef/cm8z89nv5000v01rudlafbm4e
 // pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA
 
@@ -39,13 +38,13 @@ map.on('zoomend', function () {
 })
 
 // Always snap back to center at zoom level 4
- /* map.on('moveend', function () {
+  map.on('moveend', function () {
     if (map.getZoom() === 4) {
         map.panTo(fixedCenter, { animate: false })
     }
 })
 
-  */
+
 
 
 function createPropSymbols(data) {
