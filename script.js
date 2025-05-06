@@ -30,7 +30,7 @@ map.on('zoomend', function () {
     const currentZoom = map.getZoom()
 
     if (currentZoom === 4) {
-        map.panTo(fixedCenter, { animate: false })
+        map.panTo(fixedCenter, {animate: false})
         map.dragging.disable()
     } else {
         map.dragging.enable()
@@ -38,13 +38,11 @@ map.on('zoomend', function () {
 })
 
 // Always snap back to center at zoom level 4
-  map.on('moveend', function () {
+map.on('moveend', function () {
     if (map.getZoom() === 4) {
-       // map.panTo(fixedCenter, { animate: false })
+        // map.panTo(fixedCenter, { animate: false })
     }
 })
-
-
 
 
 function createPropSymbols(data) {
@@ -120,7 +118,7 @@ function createPropSymbols(data) {
 }
 
 function createLegend(min, max) {
-    const legend = L.control({ position: 'bottomright' })
+    const legend = L.control({position: 'bottomright'})
 
     legend.onAdd = function () {
         const div = L.DomUtil.create('div', 'legend')
@@ -218,3 +216,24 @@ fetch('db.geo.json')
     .catch(error => {
         console.error('Error loading GeoJSON data:', error)
     })
+
+window.onload = function () {
+    document.getElementById("close-popup").onclick = function () {
+        document.getElementById("popup-overlay").style.display = "none"
+    }
+}
+
+    // Show popup on load
+    window.onload = function() {
+    document.getElementById("popup-overlay").style.display = "flex"
+
+    // Close popup
+    document.getElementById("close-popup").onclick = function() {
+    document.getElementById("popup-overlay").style.display = "none"
+}
+
+    // Reopen popup on info button click
+    document.getElementById("info-button").onclick = function() {
+    document.getElementById("popup-overlay").style.display = "flex"
+}
+}
