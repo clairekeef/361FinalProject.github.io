@@ -217,12 +217,6 @@ fetch('db.geo.json')
         console.error('Error loading GeoJSON data:', error)
     })
 
-window.onload = function () {
-    document.getElementById("close-popup").onclick = function () {
-        document.getElementById("popup-overlay").style.display = "none"
-    }
-}
-
     // Show popup on load
     window.onload = function() {
     document.getElementById("popup-overlay").style.display = "flex"
