@@ -40,7 +40,7 @@ map.on('zoomend', function () {
 // Always snap back to center at zoom level 4
   map.on('moveend', function () {
     if (map.getZoom() === 4) {
-        map.panTo(fixedCenter, { animate: false })
+       // map.panTo(fixedCenter, { animate: false })
     }
 })
 
