@@ -216,9 +216,13 @@ fetch('db.geo.json')
     .catch(error => {
         console.error('Error loading GeoJSON data:', error)
     })
+
     // Show popup on load
     window.onload = function() {
-    document.getElementById("popup-overlay").style.display = "flex"
+
+
+
+        document.getElementById("popup-overlay").style.display = "flex"
 
     // Close popup
     document.getElementById("close-popup").onclick = function() {
