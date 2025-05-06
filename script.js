@@ -12,10 +12,10 @@ map = L.map('map').setView([39.828175, -98.5795], 4)
 let fixedCenter = [39.828175, -98.5795]
 
 
-//mapbox://styles/clairekeef/cma14tsfn01hk01s5f9ip3s3w
+//mapbox://styles/clairekeef/cm8z89nv5000v01rudlafbm4e
 // pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA
 
-L.tileLayer('https://api.mapbox.com/styles/v1/clairekeef/cma14tsfn01hk01s5f9ip3s3w/tiles/512/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA', {
+L.tileLayer('https://api.mapbox.com/styles/v1/clairekeef/cm8z89nv5000v01rudlafbm4e/tiles/512/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2xhaXJla2VlZiIsImEiOiJjbTh5cGFub3AwM2tnMnRxMGx0N3BrcmVvIn0.SgbUJgPMxq5CQT8wrLX8BA', {
     attribution: '© Claire Keef',
     tileSize: 512,
     zoomOffset: -1,
